@@ -1,4 +1,4 @@
-# Прогресс пловца — Арина Ракова
+# Swim Progress
 
 Одностраничное приложение со статистикой выступлений спортсменки. Интерфейс собран по макету Figma на React 19, TypeScript, TanStack React Query и Ant Design.
 
