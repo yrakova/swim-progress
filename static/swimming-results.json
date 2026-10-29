@@ -5,7 +5,7 @@
     "city": "Томск",
     "sport": "Спортивное плавание"
   },
-  "generatedAt": "2026-10-28",
+  "generatedAt": "2026-10-29",
   "sourceWorkbook": "Ракова_Арина_статистика_плавание.xlsx",
   "results": [
     {
@@ -1192,6 +1192,21 @@
       "rank": "II",
       "sourceType": "Официальный протокол ЦВВС «Звёздный»",
       "sourceUrl": "https://zvezdniy.tomsk.ru/2026102830KS/ResultList_7.pdf"
+    },
+    {
+      "id": 80,
+      "startDate": "2026-10-29",
+      "endDate": "2026-10-30",
+      "city": "Томск",
+      "competition": "Межрегиональные соревнования по плаванию «Кубок Сибири», 3 этап",
+      "poolLength": 25,
+      "stroke": "Комплексное плавание",
+      "distance": 200,
+      "time": "2:56.76",
+      "timeSeconds": 176.76,
+      "rank": "II",
+      "sourceType": "Официальный протокол ЦВВС «Звёздный»",
+      "sourceUrl": "https://zvezdniy.tomsk.ru/2026102830KS/ResultList_19.pdf"
     }
   ]
 }
