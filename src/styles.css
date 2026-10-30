@@ -140,7 +140,7 @@ button, input { font: inherit; }
   scroll-margin-top: 88px;
 }
 
-.chart-card, .records-card { min-height: 460px; }
+.chart-card, .records-card { min-height: 496px; }
 .chart-card .ant-card-body, .records-card .ant-card-body { height: 100%; padding: 20px; }
 
 .section-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
@@ -149,9 +149,10 @@ button, input { font: inherit; }
 .chart-heading .ant-typography-secondary { font-size: 12px; }
 .improvement-tag { margin: 0; padding: 5px 9px; border-radius: 14px; font-weight: 600; }
 
-.chart-area { height: 316px; margin-top: 12px; }
+.chart-area { height: 352px; margin-top: 12px; }
 .chart-legend { display: flex; justify-content: flex-end; gap: 18px; color: #8c8c8c; font-size: 11px; }
 .chart-legend span { display: flex; align-items: center; gap: 6px; }
+.legend-line { width: 18px; border-top: 2px dashed #8c8c8c; }
 .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
 .legend-dot--best { background: #fa541c; box-shadow: 0 0 0 3px #fff2e8; }
 .legend-dot--latest { background: #13c2c2; }

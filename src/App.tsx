@@ -283,6 +283,7 @@ function App() {
                   <div className="chart-legend">
                     <span><i className="legend-dot legend-dot--best" />Лучший результат</span>
                     <span><i className="legend-dot legend-dot--latest" />Последний результат</span>
+                    <span><i className="legend-line" />Пунктир — норматив ЕВСК</span>
                   </div>
                 </Card>
               )}

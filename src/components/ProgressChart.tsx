@@ -1,4 +1,5 @@
-import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { getRankStandards } from '../data/rankStandards';
 import type { ResultSeries, SwimResult } from '../types';
 import { formatDate, formatTime, shortRank } from '../utils/analytics';
 
@@ -34,10 +35,14 @@ function ChartTooltip({ active, payload }: ChartTooltipProps) {
 export function ProgressChart({ series }: ProgressChartProps) {
   const bestId = series.best.id;
   const latestId = series.latest.id;
-  const values = series.results.map((item) => item.timeSeconds);
+  const standards = getRankStandards(series.stroke, series.distance, series.poolLength);
+  const values = [
+    ...series.results.map((item) => item.timeSeconds),
+    ...standards.map((standard) => standard.timeSeconds),
+  ];
   const min = Math.min(...values);
   const max = Math.max(...values);
-  const padding = Math.max(4, (max - min) * 0.12);
+  const padding = Math.max(2, (max - min) * 0.05);
 
   const renderDot = ({ cx = 0, cy = 0, payload }: ChartDotProps) => {
     if (!payload) return null;
@@ -69,13 +74,27 @@ export function ProgressChart({ series }: ProgressChartProps) {
           dataKey="timeSeconds"
           domain={[Math.max(0, min - padding), max + padding]}
           reversed
-          tickFormatter={(value: number) => formatTime(value)}
+          ticks={standards.map((standard) => standard.timeSeconds)}
+          tickFormatter={(value: number) => {
+            const standard = standards.find((item) => Math.abs(item.timeSeconds - value) < 0.01);
+            return standard ? `${standard.rank}  ${formatTime(value)}` : formatTime(value);
+          }}
           axisLine={false}
           tickLine={false}
-          width={56}
-          tick={{ fill: '#8c8c8c', fontSize: 12 }}
+          width={88}
+          tick={{ fill: '#595959', fontSize: 11, fontWeight: 600 }}
         />
         <Tooltip content={<ChartTooltip />} cursor={{ stroke: '#d9d9d9', strokeDasharray: '4 4' }} />
+        {standards.map((standard) => (
+          <ReferenceLine
+            key={standard.rank}
+            y={standard.timeSeconds}
+            stroke={standard.color}
+            strokeWidth={1.5}
+            strokeDasharray="7 5"
+            ifOverflow="extendDomain"
+          />
+        ))}
         <Line
           type="monotone"
           dataKey="timeSeconds"
